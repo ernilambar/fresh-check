@@ -12,7 +12,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Nilambar\\Apex_Check\\": "src/"
+      "Nilambar\\Fresh_Check\\": "src/"
     }
   },
   "config": {
