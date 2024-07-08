@@ -7,9 +7,8 @@
 
 namespace Nilambar\Fresh_Check\Checks;
 
-use WordPress\Plugin_Check\Checker\Check_Categories;
-use WordPress\Plugin_Check\Traits\Stable_Check;
 use WordPress\Plugin_Check\Checker\Checks\Abstract_PHP_CodeSniffer_Check;
+use WordPress\Plugin_Check\Traits\Stable_Check;
 
 /**
  * Check for running WordPress PostsPerPage sniff.
@@ -30,7 +29,7 @@ class PostsPerPage_Check extends Abstract_PHP_CodeSniffer_Check {
 	 * @return array The categories for the check.
 	 */
 	public function get_categories() {
-		return array( Check_Categories::CATEGORY_GENERAL );
+		return [ 'fresh' ];
 	}
 
 	/**
@@ -41,10 +40,10 @@ class PostsPerPage_Check extends Abstract_PHP_CodeSniffer_Check {
 	 * @return array An associative array of PHPCS CLI arguments.
 	 */
 	protected function get_args() {
-		return array(
+		return [
 			'extensions' => 'php',
 			'standard'   => 'WordPress',
 			'sniffs'     => 'WordPress.WP.PostsPerPage',
-		);
+		];
 	}
 }
