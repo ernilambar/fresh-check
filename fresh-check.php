@@ -11,7 +11,6 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-
 use Nilambar\Fresh_Check\Checks\PostsPerPage_Check;
 
 // Define.
@@ -27,12 +26,26 @@ if ( file_exists( FRESH_CHECK_DIR . '/vendor/autoload.php' ) ) {
 	include_once FRESH_CHECK_DIR . '/vendor/autoload.php';
 }
 
+// Register check category.
+add_filter(
+	'wp_plugin_check_categories',
+	function ( array $categories ) {
+		return array_merge( $categories, [ 'fresh' => esc_html__( 'Fresh', 'fresh-check' ) ] );
+	}
+);
+
+// Set default category.
+add_filter(
+	'wp_plugin_check_default_categories',
+	function () {
+		return [ 'general','fresh' ];
+	}
+);
+
+// Register checks.
 add_filter(
 	'wp_plugin_check_checks',
 	function ( array $checks ) {
-		$checks['postsperpage'] = new PostsPerPage_Check();
-
-		return $checks;
-	},
-	999
+		return array_merge( $checks, [ 'postsperpage' => new PostsPerPage_Check() ] );
+	}
 );
