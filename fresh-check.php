@@ -38,7 +38,10 @@ add_filter(
 add_filter(
 	'wp_plugin_check_default_categories',
 	function () {
-		return [ 'general','fresh' ];
+		return [
+			'general',
+			'fresh',
+		];
 	}
 );
 
